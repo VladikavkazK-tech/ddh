@@ -1,0 +1,274 @@
+:root {
+    --bg-gradient-start: #1a0505; /* Тёмно-тёмно-красный */
+    --bg-gradient-end: #0a0101;
+    --glass-bg: rgba(45, 10, 10, 0.45); /* Полупрозрачный бордовый */
+    --glass-border: rgba(255, 68, 68, 0.15);
+    --text-primary: #fecaca; /* Нежно-розово-белый текст для контраста */
+    --text-muted: #fca5a5;
+    --accent-red: #ff3344; /* Насыщенный неоновый красный */
+    --accent-dark-red: #880808;
+    --pinyin-color: #ff7788; /* Мягкий кораллово-красный */
+    --clock-bg: #4c0505;
+    --clock-text: #ff8899;
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    margin: 0;
+    padding: 20px 10px;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Стеклянные панели в тёмно-красном стиле */
+.app-header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.header-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin: 0;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff3344, #990011);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.live-clock {
+    font-family: monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    background: var(--clock-bg);
+    color: var(--clock-text);
+    padding: 4px 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+}
+
+/* Шкала прогресса */
+.progress-container {
+    font-size: 0.85rem;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.progress-bar-bg {
+    background: rgba(0, 0, 0, 0.4);
+    height: 8px;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, #990011, #ff3344);
+    width: 0%;
+    height: 100%;
+    border-radius: 99px;
+    box-shadow: 0 0 8px var(--accent-red);
+}
+
+/* Навигация (Вкладки дней) */
+.day-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.day-tab {
+    flex: 1;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-tab .zh {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.day-tab .ru {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.day-tab.active {
+    background: #ff3344;
+    border-color: #ff3344;
+    box-shadow: 0 0 15px rgba(255, 51, 68, 0.4);
+}
+
+.day-tab.active .zh { color: #000000; }
+.day-tab.active .ru { color: #4a0005; font-weight: 600; }
+
+/* Контентные блоки */
+.day-content {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.day-content.active {
+    display: flex;
+}
+
+.cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Карточки расписания */
+.task-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.task-card:hover {
+    transform: scale(1.02);
+    background: rgba(100, 20, 20, 0.4);
+    border-color: rgba(255, 51, 68, 0.4);
+}
+
+.card-time {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: var(--accent-dark-red);
+    padding: 8px 12px;
+    border-radius: 14px;
+    min-width: 75px;
+    text-align: center;
+    border: 1px solid rgba(255, 51, 68, 0.2);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.pinyin {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--pinyin-color);
+}
+
+.chinese {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 2px 0;
+    color: #ffffff;
+}
+
+.russian {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* КРИТИЧЕСКИЙ СТАТУС: Текущее дело прямо СЕЙЧАС */
+.task-card.current-task {
+    border: 2px solid var(--accent-red);
+    box-shadow: 0 0 15px rgba(255, 51, 68, 0.5);
+    background: rgba(80, 10, 10, 0.6);
+}
+
+.task-card.current-task::after {
+    content: "● СЕЙЧАС";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: var(--accent-red);
+    animation: blink 1s infinite alternate;
+}
+
+/* СТАТУС: Завершено */
+.task-card.completed {
+    opacity: 0.25;
+    transform: scale(0.98);
+}
+
+.task-card.completed .chinese {
+    text-decoration: line-through;
+}
+
+/* Карточка заметок */
+.sticky-note {
+    background: linear-gradient(135deg, #4c0505 0%, #2d0505 100%);
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    border: 1px dashed var(--accent-red);
+}
+
+.note-head {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(255,51,68,0.2);
+    padding-bottom: 4px;
+    color: var(--accent-red);
+}
+
+.sticky-note .zh {
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+@keyframes blink {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}

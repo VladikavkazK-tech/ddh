@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рассписание</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Шапка (Информационная панель) -->
+    <header class="app-header">
+        <div class="header-main">
+            <h1>智能日程表</h1>
+            <div id="live-clock" class="live-clock">00:00:00</div>
+        </div>
+        
+        <!-- Прогресс дня -->
+        <div class="progress-container">
+            <div class="progress-labels">
+                <span>Прогресс дня:</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progress-fill" class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Переключатель дней -->
+    <nav class="day-selector">
+        <button class="day-tab active" data-day="saturday">
+            <span class="zh">星期六</span>
+            <span class="ru">Суббота</span>
+        </button>
+        <button class="day-tab" data-day="sunday">
+            <span class="zh">星期日</span>
+            <span class="ru">Воскресенье</span>
+        </button>
+    </nav>
+
+    <!-- Основной контент -->
+    <main class="schedule-wrapper">
+        <!-- СУББОТА -->
+        <div id="saturday" class="day-content active">
+            <div class="cards-grid">
+                <div class="task-card" data-time="07:00">
+                    <div class="card-time">07:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">qǐchuáng</div>
+                        <div class="chinese">起床</div>
+                        <div class="russian">Встать / Подъем</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="09:00">
+                    <div class="card-time">09:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">xǐzǎo, shuāyá</div>
+                        <div class="chinese">洗澡，刷牙</div>
+                        <div class="russian">Помыться, почистить зубы</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="12:00">
+                    <div class="card-time">12:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">zuò IT xiāngguān gōngzuò</div>
+                        <div class="chinese">做 IT 相关工作</div>
+                        <div class="russian">Заняться IT (работа)</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="17:00">
+                    <div class="card-time">17:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">sànbù</div>
+                        <div class="chinese">散步</div>
+                        <div class="russian">Прогуляться</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="20:30">
+                    <div class="card-time">20:30</div>
+                    <div class="card-body">
+                        <div class="pinyin">chī wǎnfàn</div>
+                        <div class="chinese">吃晚饭</div>
+                        <div class="russian">Поужинать</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="23:00">
+                    <div class="card-time">23:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">shuìjiào</div>
+                        <div class="chinese">睡觉</div>
+                        <div class="russian">Лечь спать</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sticky-note">
+                <div class="note-head">📌 备注 (bèizhù)</div>
+                <div class="pinyin">zuò wǎngzhàn de chūgǎo</div>
+                <div class="zh">做网站的初稿</div>
+                <div class="ru">Сделать черновик сайта</div>
+            </div>
+        </div>
+
+        <!-- ВОСКРЕСЕНЬЕ -->
+        <div id="sunday" class="day-content">
+            <div class="cards-grid">
+                <div class="task-card" data-time="08:00">
+                    <div class="card-time">08:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">qǐchuáng</div>
+                        <div class="chinese">起床</div>
+                        <div class="russian">Встать / Подъем</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="10:00">
+                    <div class="card-time">10:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">xǐzǎo, shuāyá</div>
+                        <div class="chinese">洗澡，刷牙</div>
+                        <div class="russian">Помыться, почистить зубы</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="13:45">
+                    <div class="card-time">13:45</div>
+                    <div class="card-body">
+                        <div class="pinyin">xuéxí Zhōngwén</div>
+                        <div class="chinese">学习中文</div>
+                        <div class="russian">Позаниматься китайским</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="17:00">
+                    <div class="card-time">17:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">wán diànnǎo yóuxì</div>
+                        <div class="chinese">玩电脑游戏</div>
+                        <div class="russian">Поиграть в компьютерные игры</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="21:00">
+                    <div class="card-time">21:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">chī wǎnfàn</div>
+                        <div class="chinese">吃晚饭</div>
+                        <div class="russian">Поужинать</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="22:00">
+                    <div class="card-time">22:00</div>
+                    <div class="card-body">
+                        <div class="pinyin">kàn diànyǐng</div>
+                        <div class="chinese">看电影</div>
+                        <div class="russian">Посмотреть фильм</div>
+                    </div>
+                </div>
+                <div class="task-card" data-time="01:30" data-next-day="true">
+                    <div class="card-time">01:30</div>
+                    <div class="card-body">
+                        <div class="pinyin">shuìjiào</div>
+                        <div class="chinese">睡觉</div>
+                        <div class="russian">Лечь спать (ночь)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sticky-note">
+                <div class="note-head">📌 备注 (bèizhù)</div>
+                <div class="pinyin">wánchéng wǎngzhàn</div>
+                <div class="zh">完成网站</div>
+                <div class="ru">Завершить сайт</div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
